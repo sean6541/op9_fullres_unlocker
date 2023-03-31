@@ -1,0 +1,7 @@
+id=op9_fullres_unlocker
+name=Full Resolution Unlocker For The OnePlus 9 Series
+version=v1
+versionCode=1
+author=Sean Olson
+description=Unlocks full resolution (48MP main and 50MP ultrawide) RAW on the OnePlus 9 series. Only OxygenOS 13 based ROMs are supported. Will break most third party camera apps save for GCAM.
+minMagisk=20400
