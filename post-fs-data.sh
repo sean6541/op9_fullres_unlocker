@@ -9,19 +9,18 @@ reset_camx_setting() {
   fi
 }
 
-sed -i -r "/TMPDIR=.*/TMPDIR=$TMPDIR/g" "$MODDIR/system/bin/disable_fullres.sh" || exit 1
-sed -i -r "/TMPDIR=.*/TMPDIR=$TMPDIR/g" "$MODDIR/system/bin/enable_fullres.sh" || exit 1
+sed -i -r "/^TMPDIR=.*/TMPDIR=\"$TMPDIR\"/g" "$MODDIR/system/bin/disable_fullres.sh" || exit 1
+sed -i -r "/^TMPDIR=.*/TMPDIR=\"$TMPDIR\"/g" "$MODDIR/system/bin/enable_fullres.sh" || exit 1
 if [[ -d "$TMPDIR" ]]; then rm -r "$TMPDIR"; fi
 mkdir "$TMPDIR" || exit 1
 if [[ -f "/vendor/etc/camera/camxoverridesettings.txt" ]]; then
   cp /vendor/etc/camera/camxoverridesettings.txt "$TMPDIR/fullres_disabled.txt" || exit 1
-  cp "$TMPDIR/fullres_disabled.txt" "$MODDIR/system/vendor/etc/camera/camxoverridesettings.txt" || exit 1
   cp "$TMPDIR/fullres_disabled.txt" "$TMPDIR/fullres_enabled.txt" || exit 1
   reset_camx_setting "overrideForceSensorMode" "0" || exit 1
   reset_camx_setting "exposeFullSizeForQCFA" "TRUE" || exit 1
   reset_camx_setting "useFeatureForQCFA" "0" || exit 1
 else
   echo "" > "$TMPDIR/fullres_disabled.txt" || exit 1
-  echo "" > "$MODDIR/system/vendor/etc/camera/camxoverridesettings.txt" || exit 1
   echo "overrideForceSensorMode=0\nexposeFullSizeForQCFA=TRUE\nuseFeatureForQCFA=0\n" > "$TMPDIR/fullres_enabled.txt" || exit 1
 fi
+cp "$TMPDIR/fullres_disabled.txt" "$MODDIR/system/vendor/etc/camera/camxoverridesettings.txt" || exit 1
