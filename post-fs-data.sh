@@ -5,7 +5,7 @@ reset_camx_setting() {
   if grep -q -E -i "^[[:blank:]]*$1[[:blank:]]*=" "$TMPDIR/fullres_enabled.txt"; then
     sed -i -r "s/^[[:blank:]]*$1[[:blank:]]*=.*/$1=$2/gI" "$TMPDIR/fullres_enabled.txt" || return 1
   else
-    echo "\n$1=$2" >> "$TMPDIR/fullres_enabled.txt" || return 1
+    printf "\n$1=$2\n" >> "$TMPDIR/fullres_enabled.txt" || return 1
   fi
 }
 
@@ -21,6 +21,6 @@ if [[ -f "/vendor/etc/camera/camxoverridesettings.txt" ]]; then
   reset_camx_setting "useFeatureForQCFA" "0" || exit 1
 else
   touch "$TMPDIR/fullres_disabled.txt" || exit 1
-  echo "overrideForceSensorMode=0\nexposeFullSizeForQCFA=TRUE\nuseFeatureForQCFA=0" > "$TMPDIR/fullres_enabled.txt" || exit 1
+  printf "overrideForceSensorMode=0\nexposeFullSizeForQCFA=TRUE\nuseFeatureForQCFA=0\n" > "$TMPDIR/fullres_enabled.txt" || exit 1
 fi
 cp "$TMPDIR/fullres_disabled.txt" "$MODDIR/system/vendor/etc/camera/camxoverridesettings.txt" || exit 1

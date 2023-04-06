@@ -1,6 +1,6 @@
 # OnePlus 9 Series Full Resolution Unlocker
 
-Magisk module that unlocks full resolution (48MP main and 50MP ultrawide) RAW on the OnePlus 9 series. Only OxygenOS 13 based ROMs are supported. Will break most third party camera apps save for GCAM.
+Magisk module that unlocks full resolution (48MP main and 50MP ultrawide) RAW on the OnePlus 9 series. Only OxygenOS 13 based ROMs are supported at the moment. Will break most third party camera apps save for GCAM.
 
 
 ## How To Install:
@@ -34,4 +34,4 @@ useFeatureForQCFA=0
 ```
 This hack (along with setting the SELinux context of the `camxoverridesettings.txt` file correctly) should work on most SM8350 (Snapdragon 888) based devices (and perhaps other Qualcomm chipsets).
 
-For this hack to work, OnePlus devices also require a simple (one byte) patch to `/vendor/lib64/hw/com.qti.chi.override.so` that allows third party apps to use some system APIs and thus this module is specific to the OnePlus 9 series. The module ~~is~~ (will be, its not quite finished yet) full scripted so it *should* (no guarantees) work on all versions of OxygenOS and continue to work with future updates.
+For this hack to work, OnePlus devices also require a simple (one byte) patch to `/vendor/lib64/hw/com.qti.chi.override.so` that allows third party apps to use some system APIs and thus this module is specific to the OnePlus 9 series. ~~The module is full scripted so it *should* (no guarantees) work on all versions of OxygenOS and continue to work with future updates.~~ (Not quite finished yet.)
