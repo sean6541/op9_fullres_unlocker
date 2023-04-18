@@ -1,9 +1,9 @@
 #!/system/bin/sh
 
-TMPDIR=
+MODDIR=
 
 stop media || exit 1
-cp "$TMPDIR/fullres_enabled.txt" /vendor/etc/camera/camxoverridesettings.txt
+cp "$MODDIR/overridden_at_boot_DO_NOT_EDIT/fullres_enabled.txt" "$MODDIR/system/vendor/etc/camera/camxoverridesettings.txt"
 sleep 1
 start media
 sleep 1

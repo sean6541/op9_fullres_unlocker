@@ -9,8 +9,8 @@ reset_camx_setting() {
   fi
 }
 
-sed -i -r "s,^TMPDIR=.*,TMPDIR=\"$TMPDIR\",g" "$MODDIR/system/bin/disable_fullres.sh" || exit 1
-sed -i -r "s,^TMPDIR=.*,TMPDIR=\"$TMPDIR\",g" "$MODDIR/system/bin/enable_fullres.sh" || exit 1
+sed -i -r "s,^MODDIR=.*,MODDIR=\"$MODDIR\",g" "$MODDIR/system/bin/disable_fullres.sh" || exit 1
+sed -i -r "s,^MODDIR=.*,MODDIR=\"$MODDIR\",g" "$MODDIR/system/bin/enable_fullres.sh" || exit 1
 if [[ -d "$TMPDIR" ]]; then rm -r "$TMPDIR"; fi
 mkdir "$TMPDIR" || exit 1
 if [[ -f "/vendor/etc/camera/camxoverridesettings.txt" ]]; then
